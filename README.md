@@ -6,7 +6,7 @@ milliseconds), and call .blink() as often as possible.
 
 ## Example ##
 
-#include <TimedBlink.h>
+`#include <TimedBlink.h>
 
 TimedBlink monitor(LED_BUILTIN);
 
@@ -18,4 +18,4 @@ void setup() {
 
 void loop() {
   monitor.blink(); # Call this as often as possible
-}
+}`
