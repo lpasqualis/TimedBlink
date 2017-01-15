@@ -6,16 +6,16 @@ milliseconds), and call .blink() as often as possible.
 
 ## Example ##
 
-`#include <TimedBlink.h>
+  #include <TimedBlink.h>
 
-TimedBlink monitor(LED_BUILTIN);
+  TimedBlink monitor(LED_BUILTIN);
 
-void setup() {
-   Serial.begin(9600);
-   pinMode(LED_BUILTIN, OUTPUT);
-   monitor.blink(150,50); # LED on for 150 ms and off for 50 ms.
-}
+  void setup() {
+    Serial.begin(9600);
+    pinMode(LED_BUILTIN, OUTPUT);
+    monitor.blink(150,50); # LED on for 150 ms and off for 50 ms.
+  }
 
-void loop() {
-  monitor.blink(); # Call this as often as possible
-}`
+  void loop() {
+    monitor.blink(); # Call this as often as possible
+  }
