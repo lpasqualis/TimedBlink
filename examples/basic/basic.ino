@@ -8,18 +8,17 @@
  *
  * This example code is in the public domain.
  */
- 
+
 #include <TimedBlink.h>
 
-TimedBlink monitor(LED_BUILTIN);
+TimedBlink monitor(LED_BUILTIN); // Use built-in LED
 
 void setup() {
    Serial.begin(9600);
    pinMode(LED_BUILTIN, OUTPUT);
-   monitor.blink(200,100);
+   monitor.blink(150,50);  // On for 150ms, off for 50ms
 }
 
 void loop() {
   monitor.blink();
 }
-
