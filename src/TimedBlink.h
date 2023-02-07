@@ -11,6 +11,10 @@ class TimedBlink {
     unsigned long m_blinkTime;
     int m_onForTime;
     int m_offForTime;
+	uint32_t m_beatTime;
+	uint32_t m_beatCount;
+	uint32_t m_beatState;
+	bool m_beating;
     blink_t m_blinkState;
     short m_pin;
     int m_resolution;
@@ -20,13 +24,15 @@ class TimedBlink {
   public:
 
     TimedBlink(int pin);
-    void blink(int on_for, int off_for);
-    void blink();
+    void blink(int on_for = -1, int off_for = -1);
+	void loop(void);
     void setOnTime(int ms);
     void setOffTime(int ms);
     void setBlinkState(blink_t state);
     void blinkDelay(int d);
     void blinkOff();
+	void heartbeat(uint32_t on = 200,
+		uint32_t off = 1000 - (3*200), uint32_t count = 2);
 };
 
 #endif // __TimedBlink__H__
