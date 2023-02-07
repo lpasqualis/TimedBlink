@@ -19,3 +19,23 @@ milliseconds), and call .blink() as often as possible.
     void loop() {
       monitor.blink(); // Call this as often as possible
     }
+
+## Heartbeat feature ##
+
+Allows a pulsed series of LED blinks.
+
+    #include <TimedBlink.h>
+
+    TimedBlink heart(LED_BUILTIN);
+
+    void setup() {
+      Serial.begin(9600);
+      pinMode(LED_BUILTIN, OUTPUT);
+
+	  // LED on for 150 ms and off for 150 ms., three times in 2 seconds
+      heart.heartbeat(150, 2000-(150*5), 3);
+    }
+
+    void loop() {
+      heart.blink(); // Call this as often as possible
+    }
