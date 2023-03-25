@@ -82,26 +82,26 @@ void TimedBlink::blink(int on_for, int off_for) {
   setOnTime(on_for);
   setOffTime(off_for);
 
-  if (m_blinkState == BLINK_OFF && m_offForTime > 0) {
+  if (m_blinkState == BLINK_OFF && (m_offForTime > 0 || m_beating)) {
 		if (m_beating) {
-			if (diff > (uint32_t )m_onForTime && m_beatState < m_beatCount) {
+			if (diff >= (uint32_t )m_onForTime && m_beatState < m_beatCount) {
 		  		setBlinkState(BLINK_ON);
 				m_beatState++;
 				dbg("OFF -> ON beating state %u\n", m_beatState);
 			}
-			else if (diff > (uint32_t)m_offForTime) {
+			else if ((m_offForTime > 0) && (diff >= (uint32_t)m_offForTime)) {
 				setBlinkState(BLINK_ON);
 				m_beatState = 1;
 				dbg("OFF -> ON beating state %u\n", m_beatState);
 			}
 		}
 
-		else if (diff > (uint32_t )m_offForTime) {
+		else if (diff >= (uint32_t )m_offForTime) {
 		  setBlinkState(BLINK_ON);
 		}
   }
   else if (m_blinkState == BLINK_ON && m_onForTime > 0) {
-		if (diff > (uint32_t )m_onForTime) {
+		if (diff >= (uint32_t )m_onForTime) {
 			setBlinkState(BLINK_OFF);
 
 			if (m_beating) {

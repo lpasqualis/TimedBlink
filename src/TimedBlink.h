@@ -31,8 +31,12 @@ class TimedBlink {
     void setBlinkState(blink_t state);
     void blinkDelay(int d);
     void blinkOff();
-	void heartbeat(uint32_t on = 200,
+    void heartbeat(uint32_t on = 200,
 		uint32_t off = 1000 - (3*200), uint32_t count = 2);
+    inline void oneshot(int ms) { setOnTime(ms); setBlinkState(BLINK_ON); };
+    inline void heartbeat_oneshot(int ms, uint32_t count) {
+        heartbeat(ms, 0, count); setBlinkState(BLINK_ON);
+    };
 };
 
 #endif // __TimedBlink__H__
